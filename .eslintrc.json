@@ -1,0 +1,56 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["*.ts"],
+
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
+      ],
+
+      "rules": {
+        "max-len": ["warn", { "code": 175 }], // must to be synced with prettier
+        "spaced-comment": ["warn", "always"],
+        "prefer-arrow-callback": "error",
+        "no-console": "error",
+
+        "import/order": "warn",
+
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unused-vars": "off", // ts does it
+        "@typescript-eslint/no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",
+        "@typescript-eslint/no-unnecessary-type-arguments": "error",
+        "@typescript-eslint/no-unnecessary-condition": "off", // because of typeguards & etc
+        "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public", "overrides": { "parameterProperties": "off" } }],
+
+        "@typescript-eslint/naming-convention": [
+          "error",
+          { "selector": "default", "format": ["camelCase"] },
+          { "selector": "typeLike", "format": ["PascalCase"] },
+          { "selector": "enumMember", "format": ["PascalCase"] },
+          { "selector": ["objectLiteralProperty", "objectLiteralMethod"], "format": ["camelCase", "PascalCase"] },
+          // "private _value" of property, until https://github.com/typescript-eslint/typescript-eslint/issues/816
+          { "selector": "classProperty", "modifiers": ["private"], "format": ["camelCase"], "leadingUnderscore": "allow" },
+          // standalone constants
+          { "selector": "variable", "modifiers": ["const", "global"], "format": ["camelCase", "UPPER_CASE"] },
+          // unused parameter
+          { "selector": ["variable", "parameter"], "modifiers": ["unused"], "format": ["camelCase"], "leadingUnderscore": "allow" }
+        ],
+        "@typescript-eslint/member-ordering": ["warn", { "default": { "memberTypes": ["field", "constructor", "method"] } }]
+      },
+
+      "plugins": ["import"]
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"]
+    }
+  ]
+}

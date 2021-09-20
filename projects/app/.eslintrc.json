@@ -1,0 +1,29 @@
+{
+  "extends": "../../.eslintrc.json",
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["projects/app/tsconfig.app.json", "projects/app/tsconfig.spec.json"]
+      },
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "type": "element",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "type": "attribute",
+            "style": "camelCase"
+          }
+        ]
+      }
+    }
+  ]
+}

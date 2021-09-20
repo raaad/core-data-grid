@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "target": "es2015",
+    "module": "es2020",
+    "lib": ["dom", "es2019"],
+
+    "paths": {
+      "core-data-grid": ["dist/core"],
+      "core-data-grid/*": ["dist/core/*"],
+      "@@zone.js/*": ["node_modules/zone.js/*"] // https://github.com/angular/angular/issues/40305
+    }
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
